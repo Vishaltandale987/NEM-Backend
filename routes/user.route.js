@@ -7,44 +7,6 @@ const userrouter = express.Router();
 
 //all users
 
-/**
-* @swagger
-* components:
-*   schemas:
-*       User:
-*           type: object
-*           properties:
-*               _id:
-*                   type: string
-*                   description: The auto-generated id of the user
-*               name:
-*                   type: string
-*                   description: The user name
-*               pass:
-*                    type: string
-*                    description: The user email
-*               email:
-*                     type: string
-*                     description: The user email
-*/
-
-/**
- * @swagger
- * /user:
- *  get:
- *      summary: This will get all the user data from the database
- *      tags: [User]
- *      responses:
- *          200:
- *              description: The list of all the users
- *              content:
- *                  application/json:
- *                      schema:
- *                          type: array
- *                          item:
- *                              $ref: "#/components/schemas/User"
- *
- */
 
 userrouter.get("/", async (req, res) => {
   const notes = await UserModel.find();
@@ -53,27 +15,6 @@ userrouter.get("/", async (req, res) => {
 
 //register
 
-/**
- * @swagger
- * /user/register:
- *  post:
- *      summary: This is to post a new user to the database.
- *      tags: [User]
- *      requestBody:
- *           required: true
- *           content:
- *               application/json:
- *                  schema:
- *                      $ref: "#/components/schemas/User"
- *      responses:
- *          200:
- *              description: The user was succesfully register.1
- *              content:
- *                  application/json:
- *                      schema:
- *                          $ref: "#/components/schemas/User"
- *
- */
 userrouter.post("/register", async (req, res) => {
   const { name, email, pass } = req.body;
   try {
@@ -94,27 +35,6 @@ userrouter.post("/register", async (req, res) => {
 
 //login
 
-/**
- * @swagger
- * /user/login:
- *  post:
- *      summary: This is to login to the database
- *      tags: [User]
- *      requestBody:
- *           required: true
- *           content:
- *               application/json:
- *                  schema:
- *                      $ref: "#/components/schemas/User"
- *      responses:
- *          200:
- *              description: The user was succesfully register.1
- *              content:
- *                  application/json:
- *                      schema:
- *                          $ref: "#/components/schemas/User"
- *
- */
 
 userrouter.post("/login", async (req, res) => {
   const { email, pass } = req.body;
