@@ -5,8 +5,6 @@ const { userrouter } = require("./routes/user.route");
 const { notesrouter } = require("./routes/notes.route");
 const { auth } = require("./middlewares/authentication.middleware");
 require("dotenv").config();
-const swaggerjsdoc = require("swagger-jsdoc");
-const swaggerUI = require("swagger-ui-express");
 
 let app = express();
 app.use(express.json());
